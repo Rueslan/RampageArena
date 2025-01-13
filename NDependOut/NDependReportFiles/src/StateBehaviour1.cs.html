@@ -1,0 +1,14 @@
+<meta charset="UTF-8">
+<html>
+  <head>
+    <link rel="stylesheet" href="src.css"/>
+	 <script src="src.js"></script>
+    <script src="CommonIssuesData.js"></script>
+    <script>
+var issues='{"fileName":"StateBehaviour1.cs","relativePath":"../../../Assets/Plugins/Zenject/OptionalExtras/IntegrationTests/Misc/TestAnimationStateBehaviourInject/StateBehaviour1.cs","absolutePath":"C:/Unity/Projects/Study/RampageArena/Assets/Plugins/Zenject/OptionalExtras/IntegrationTests/Misc/TestAnimationStateBehaviourInject/StateBehaviour1.cs","projectName":"Zenject-IntegrationTests","line":"15","statement":"1","debt":"43min","cov":"N/A","issues":[{"line":"7","ruleId":"ND1211","debt":"5min","severity":"1","expl":"The <i>field OnStateEnterCalls</i> is assigned from these instance methods: <i>2 methods OnStateEnter(…) and Test1()</i>. This can lead to unexpected <i>side effects</i> since all instances are sharing the same state."},{"line":"3","ruleId":"ND1305","debt":"5min","severity":"0","expl":"The <i>namespace Zenject.Tests.TestAnimationStateBehaviourInject</i> contains only the <i>class StateBehaviour1</i>. To prevent an excessive number of <i>using</i> clauses in client code, refrain from segregating classes into numerous small namespaces."},{"line":"7","ruleId":"ND1901","debt":"18min","severity":"2","expl":"The <i>static field OnStateEnterCalls</i> should be declared as <i>readonly</i> because changing it can lead to runtime confusion and hinder code testability. In <i>Object-Oriented Programming</i>, <i>instance fields</i> are the preferred choice for holding modifiable states."},{"line":"7","ruleId":"ND1905","debt":"5min","severity":"2","expl":"The <i>field OnStateEnterCalls</i> is assigned outside its parent type by the <i>method Test1()</i>. A field should be an encapsulated <i>implementation detail</i>. Consider making it <i>private</i> or refactor it as a property whose accesses can be better controlled at debug-time."},{"line":"5","ruleId":"ND3204","debt":"10min","severity":"1","expl":"The <i>constructor of StateBehaviour1</i> shouldn\'t instantiate directly the <i>class StateMachineBehaviour</i> and should use the method <i>ScriptableObject.CreateInstance&lt;T&gt;()</i> instead."}]}';
+ </script>
+</head>
+<body>
+    <span id="source" fid="18"  style="display:none">H4sIAAAAAAAEAGWPQQ8BMRCF7/0VcyRE4soJcXAQB1zcRncw0p1K290Q8d9Vaxcxh+lk+r2+18qzHGErHG5zObLQWCnBkvwFNcGO5Ew6DDbkg099IlxiYCvrgIGmdMKabeUWiVN3BbEu1d6wBm3Qe/jlhjDKmyXqU3RrL5Iwy7+e8BGNB0uAVXacSyA3Q2N8DNrQtibnuKBGVlsufgSdHNs6wPfQh2aVqIUcbHJLUz85GrxR/FhB127r9En4qr9Mvd64BR4q94d6AqGOcf5kAQ==$48$</span>
+  </body>
+</html>

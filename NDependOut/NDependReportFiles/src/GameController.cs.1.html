@@ -1,0 +1,14 @@
+<meta charset="UTF-8">
+<html>
+  <head>
+    <link rel="stylesheet" href="src.css"/>
+	 <script src="src.js"></script>
+    <script src="CommonIssuesData.js"></script>
+    <script>
+var issues='{"fileName":"GameController.cs","relativePath":"../../../Assets/Scripts/GameController.cs","absolutePath":"C:/Unity/Projects/Study/RampageArena/Assets/Scripts/GameController.cs","projectName":"Assembly-CSharp","line":"39","statement":"8","debt":"38min","cov":"N/A","issues":[{"line":"9","ruleId":"ND1211","debt":"5min","severity":"1","expl":"The <i>field instance</i> is assigned from this instance method: <i>method Awake()</i>. This can lead to unexpected <i>side effects</i> since all instances are sharing the same state."},{"line":"9","ruleId":"ND1901","debt":"10min","severity":"2","expl":"The <i>static field instance</i> should be declared as <i>readonly</i> because changing it can lead to runtime confusion and hinder code testability. In <i>Object-Oriented Programming</i>, <i>instance fields</i> are the preferred choice for holding modifiable states."},{"line":"9","ruleId":"ND1902","debt":"10min","severity":"1","expl":"The <i>static field instance</i> is typed with the <i>class GameController</i> that is mutable: its states can be modified at runtime. This can lead to runtime confusion and hinder code testability. In <i>Object-Oriented Programming</i>, <i>instance fields</i> are the preferred choice for holding modifiable states."},{"line":"13","ruleId":"ND1905","debt":"10min","severity":"2","expl":"The <i>field _gameFinished</i> is assigned outside its parent type by the <i>2 methods Restart() and GameOver()</i>. A field should be an encapsulated <i>implementation detail</i>. Consider making it <i>private</i> or refactor it as a property whose accesses can be better controlled at debug-time."},{"line":"9","ruleId":"ND2001","debt":"3min  0s","severity":"1","expl":"The <i>static field instance</i> name does not adhere to usual .NET field naming conventions. It does not start with an uppercase letter, an underscore followed by an uppercase letter or a <i>s_</i> expression followed by an uppercase letter."}]}';
+ </script>
+</head>
+<body>
+    <span id="source" fid="40"  style="display:none">H4sIAAAAAAAEAH1SwU7CQBC9N+k/jBdSLv0ACQcERRINRiIXY8zSDmV0mSW725rG8O/ulgJrJc5luu/Nm3kzaWmIC1jUxuJ2EEdl8EzHSkrMLCk26RQZNWWnkhcmW99yQYyXsPQZOXcCLv5nU4dWqI2Qri6OduVKUgaZFMbAVGxxrNhqb0PDNTwqVje4ERWpUsfRdxyBi1ZjrLAudUTEDucMm+5BtS+brz7cdlBRZpWunwSjPJW93lOOM56x2aGn347ClVIS3gsnvyMms8EchrAW0vwZsVSy3CJUTTqTmiphPUw5jL7EJyb9A9Ou44PWkBydw9UQuJQSej0IMbsh0z9LArWPCRp3gjopTnv2B78rNNpScwDujxYbB8dJh0GDkJu487b95/ygRJ40XtpW+84ZmkWXhxtfWDW8frpAO3L/W4WJ1SWGjrsX93xnoE/u+wfehy/Z0QI=$168$</span>
+  </body>
+</html>

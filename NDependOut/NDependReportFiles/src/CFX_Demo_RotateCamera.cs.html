@@ -1,0 +1,14 @@
+<meta charset="UTF-8">
+<html>
+  <head>
+    <link rel="stylesheet" href="src.css"/>
+	 <script src="src.js"></script>
+    <script src="CommonIssuesData.js"></script>
+    <script>
+var issues='{"fileName":"CFX_Demo_RotateCamera.cs","relativePath":"../../../Assets/JMO Assets/Cartoon FX (legacy)/Demo/Assets/CFX_Demo_RotateCamera.cs","absolutePath":"C:/Unity/Projects/Study/RampageArena/Assets/JMO Assets/Cartoon FX (legacy)/Demo/Assets/CFX_Demo_RotateCamera.cs","projectName":"Assembly-CSharp","line":"19","statement":"4","debt":"23min","cov":"N/A","issues":[{"line":"8","ruleId":"ND1211","debt":"5min","severity":"1","expl":"The <i>field rotating</i> is assigned from this instance method: <i>method OnToggleCamera()</i>. This can lead to unexpected <i>side effects</i> since all instances are sharing the same state."},{"line":"8","ruleId":"ND1901","debt":"10min","severity":"2","expl":"The <i>static field rotating</i> should be declared as <i>readonly</i> because changing it can lead to runtime confusion and hinder code testability. In <i>Object-Oriented Programming</i>, <i>instance fields</i> are the preferred choice for holding modifiable states."},{"line":"8","ruleId":"ND1905","debt":"5min","severity":"2","expl":"The <i>field rotating</i> is assigned outside its parent type by the <i>method OnToggleCamera()</i>. A field should be an encapsulated <i>implementation detail</i>. Consider making it <i>private</i> or refactor it as a property whose accesses can be better controlled at debug-time."},{"line":"8","ruleId":"ND2001","debt":"3min  0s","severity":"1","expl":"The <i>static field rotating</i> name does not adhere to usual .NET field naming conventions. It does not start with an uppercase letter, an underscore followed by an uppercase letter or a <i>s_</i> expression followed by an uppercase letter."}]}';
+ </script>
+</head>
+<body>
+    <span id="source" fid="5"  style="display:none">H4sIAAAAAAAEAFWQzW7CMBCEz/ZT7DGpqEmLemnUQ0nLoVIvLVTckEk2YMnZjfyDhCrevQ6EStzWO56ZTxu9oR2syITjO+0MYSnjefV99AE7VbG1WAfD5Espp1OotAvMBIs1wD1kdQ6PxcMTfKAm+GSHxFL2cWtNDbXV3kO1WG/esOPNFwcdsNIdOg3P6TPxHPf6YDg6+SuFT3JyjeYtswU3WAaaFwguJjYhxai3lnUA3yM2SZ0VqmjLf3HpNPmWXTcmMFVIAd054MCmgVXfJBjIcilStTBtdu1KGyHCNUBdqF8dR2qy2zTVszfDcwI/6UbsZir2kwvT3dJ0qBq0QQ9TnppP8iT/ADJ001hvAQ==$241$</span>
+  </body>
+</html>
