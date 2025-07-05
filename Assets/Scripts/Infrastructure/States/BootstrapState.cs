@@ -77,7 +77,7 @@ namespace Assets.Scripts.Infrastructure.States
         private IStaticDataService RegisterStaticData()
         {
             IStaticDataService staticData = new StaticDataService();
-            staticData.LoadMonsters();
+            staticData.Load();
             _services.RegisterSingle(staticData);
             return staticData;
         }

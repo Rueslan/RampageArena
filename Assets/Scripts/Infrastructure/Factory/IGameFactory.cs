@@ -13,8 +13,9 @@ namespace Assets.Scripts.Infrastructure.Factory
         public List<ISavedProgress> ProgressWriters { get; }
         GameObject CreateHUD();
         GameObject CreatePlayer(GameObject at);
-        void Register(ISavedProgressReader savedProgress);
+        //void Register(ISavedProgressReader savedProgress);
         GameObject CreateMonster(MonsterTypeId monsterTypeId, Transform parent);
         LootPiece CreateLoot();
+        void CreateSpawner(Vector3 at, string spawnerId, MonsterTypeId monsterTypeId);
     }
 }

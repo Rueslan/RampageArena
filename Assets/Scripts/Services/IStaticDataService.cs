@@ -5,6 +5,9 @@ namespace Assets.Scripts.StaticData
     public interface IStaticDataService : IService
     {
         MonsterStaticData ForMonster(MonsterTypeId typeId);
-        void LoadMonsters();
+
+        LevelStaticData ForLevel(string sceneKey);
+
+        void Load();
     }
 }

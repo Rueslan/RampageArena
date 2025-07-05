@@ -10,6 +10,11 @@ namespace Assets.Scripts.Logic
     public class EnemySpawner : MonoBehaviour, ISavedProgress
     {
         public MonsterTypeId MonsterTypeId;
+        public string Id
+        {
+            get => _id;
+            set => _id = value;
+        }
         public bool Slain => _slain;
 
         [SerializeField] private bool _slain;
