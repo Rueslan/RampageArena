@@ -2,6 +2,7 @@
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.PersistentProgress;
 using System.Collections.Generic;
+using Assets.Scripts.StaticData;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Factory

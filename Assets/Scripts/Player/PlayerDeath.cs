@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Assets.Scripts.Common;
 using UnityEngine;
 
 namespace Assets.Scripts.Player

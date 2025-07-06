@@ -1,22 +1,24 @@
 using Assets.Scripts.Interfaces;
-using Assets.Scripts.Player;
 using UnityEngine;
 
-public class Water : MonoBehaviour
+namespace Assets.Scripts.Common
 {
-    [SerializeField] private GameObject[] _waterSplashEffects;
-
-    private void OnTriggerEnter(Collider other)
+    public class Water : MonoBehaviour
     {
-        if (other.transform.TryGetComponent(out IHealth health))
+        [SerializeField] private GameObject[] _waterSplashEffects;
+
+        private void OnTriggerEnter(Collider other)
         {
-            health.CurrentHealth = 0;
-            foreach (var effect in _waterSplashEffects)
+            if (other.transform.TryGetComponent(out IHealth health))
             {
-                Instantiate(effect, other.transform.position, Quaternion.identity);
+                health.CurrentHealth = 0;
+                foreach (var effect in _waterSplashEffects)
+                {
+                    Instantiate(effect, other.transform.position, Quaternion.identity);
+                }
+
             }
-
         }
-    }
 
+    }
 }

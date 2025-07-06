@@ -1,27 +1,32 @@
+using Assets.Scripts.Abstract;
+using Assets.Scripts.Enemy;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAttackHandler : AttackHandlerBase
+namespace Assets.Scripts.OldEnemy
 {
-    private NavMeshAgent _navMeshAgent;
-    private RaycastHit hit;
-    private readonly float raycastDistance = 20f;
-    public EnemyAnimator Animator;
-
-    private void Start()
+    public class EnemyAttackHandler : AttackHandlerBase
     {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-    }
+        private NavMeshAgent _navMeshAgent;
+        private RaycastHit hit;
+        private readonly float raycastDistance = 20f;
+        public EnemyAnimator Animator;
 
-    private void Update()
-    {
-        if (Physics.Raycast(transform.position + Vector3.up * 2, transform.forward, out hit, raycastDistance))
+        private void Start()
         {
-            if (hit.collider.TryGetComponent(out PlayerBase _))
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+        }
+
+        private void Update()
+        {
+            if (Physics.Raycast(transform.position + Vector3.up * 2, transform.forward, out hit, raycastDistance))
             {
-                Attack();
+                if (hit.collider.TryGetComponent(out PlayerBase _))
+                {
+                    Attack();
+                }
             }
         }
-    }
 
+    }
 }

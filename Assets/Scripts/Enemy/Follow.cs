@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.Enemy
+namespace Assets.Scripts.Enemy
 {
     public abstract class Follow : MonoBehaviour
     {

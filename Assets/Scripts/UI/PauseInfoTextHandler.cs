@@ -1,25 +1,28 @@
 using TMPro;
 using UnityEngine;
 
-public class PauseInfoTextHandler : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    private TMP_Text menuTitle;
-    private string _deadText = "Вы погибли";
-
-    private void Awake()
+    public class PauseInfoTextHandler : MonoBehaviour
     {
-        menuTitle = GetComponent<TMP_Text>();
-        EventManager.PlayerDead.AddListener(SetDeathInfoText);
-        EventManager.GamePaused.AddListener(SetPauseInfoText);
-    }
+        private TMP_Text menuTitle;
+        private string _deadText = "Р’С‹ РїРѕРіРёР±Р»Рё";
 
-    public void SetDeathInfoText()
-    {
-        menuTitle.text = $"<color=red>{_deadText}</color>";
-    }
+        private void Awake()
+        {
+            menuTitle = GetComponent<TMP_Text>();
+            EventManager.PlayerDead.AddListener(SetDeathInfoText);
+            EventManager.GamePaused.AddListener(SetPauseInfoText);
+        }
 
-    public void SetPauseInfoText()
-    {
-        menuTitle.text = "Пауза";
+        public void SetDeathInfoText()
+        {
+            menuTitle.text = $"<color=red>{_deadText}</color>";
+        }
+
+        public void SetPauseInfoText()
+        {
+            menuTitle.text = "РџР°СѓР·Р°";
+        }
     }
 }

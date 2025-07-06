@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class ControllerCanvas : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    public static ControllerCanvas instance;
-    private void Awake()
+    public class ControllerCanvas : MonoBehaviour
     {
-        if (instance != null && instance != this)
+        public static ControllerCanvas instance;
+        private void Awake()
         {
-            Destroy(gameObject);
-            return;
-        }
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
 
-        instance = this;
-        //DontDestroyOnLoad(this);
+            instance = this;
+            //DontDestroyOnLoad(this);
+        }
     }
 }

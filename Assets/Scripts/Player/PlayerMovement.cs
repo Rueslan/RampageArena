@@ -1,6 +1,8 @@
+using Assets.Scripts.Common;
 using Assets.Scripts.Data;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.PersistentProgress;
+using Assets.Scripts.Services.Input;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

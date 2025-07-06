@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.UI;
-using Scripts.Enemy;
 using System;
 using System.Collections;
 using UnityEngine;

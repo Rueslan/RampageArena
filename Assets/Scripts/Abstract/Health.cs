@@ -1,9 +1,11 @@
-using Assets.Scripts.Player;
-using System;
+using Assets.Scripts.Enemy;
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyAnimator))]
-public abstract class Health : MonoBehaviour
+namespace Assets.Scripts.Abstract
 {
+    [RequireComponent(typeof(EnemyAnimator))]
+    public abstract class Health : MonoBehaviour
+    {
 
+    }
 }

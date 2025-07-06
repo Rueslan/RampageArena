@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Assets.Scripts.Data;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.Scripts.UI

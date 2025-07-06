@@ -8,6 +8,6 @@ namespace Assets.Scripts.StaticData
     {
         public string LevelKey;
 
-        public List<LevelSpawnerData> EnemySpawners;
+        public List<EnemySpawnerData> EnemySpawners;
     }
 }

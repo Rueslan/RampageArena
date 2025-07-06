@@ -1,5 +1,8 @@
-public enum MonsterTypeId
+namespace Assets.Scripts.StaticData
 {
-    Lich = 0,
-    Golem = 10
+    public enum MonsterTypeId
+    {
+        Lich = 0,
+        Golem = 10
+    }
 }

@@ -4,9 +4,10 @@ using Assets.Scripts.Infrastructure.Services.PersistentProgress;
 using Assets.Scripts.Interfaces;
 using Assets.Scripts.StaticData;
 using Assets.Scripts.UI;
-using Scripts.Enemy;
 using System.Collections.Generic;
 using Assets.Scripts.Logic;
+using Assets.Scripts.Logic.EnemySpawners;
+using Assets.Scripts.Services;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -89,9 +90,10 @@ namespace Assets.Scripts.Infrastructure.Factory
 
         public void CreateSpawner(Vector3 at, string spawnerId, MonsterTypeId monsterTypeId)
         {
-            EnemySpawner spawner = InstantiateRegistered(AssetPath.SPAWNER, at)
-                .GetComponent<EnemySpawner>();
+            SpawnPoint spawner = InstantiateRegistered(AssetPath.SPAWNER, at)
+                .GetComponent<SpawnPoint>();
 
+            spawner.Construct(this);
             spawner.Id = spawnerId;
             spawner.MonsterTypeId = monsterTypeId;
         }

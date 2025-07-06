@@ -1,15 +1,17 @@
-﻿using Assets.Scripts.Infrastructure;
-using Assets.Scripts.Infrastructure.Services;
+﻿using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.States;
-using JetBrains.Annotations;
+using Assets.Scripts.Logic;
 
-public class Game
+namespace Assets.Scripts.Infrastructure
 {
-    public GameStateMachine StateMachine;
-
-    public Game(ICoroutineRunner coroutineRunner, LoadingCurtain curtain)
+    public class Game
     {
-        StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), curtain, AllServices.Container);
-    }
+        public GameStateMachine StateMachine;
 
+        public Game(ICoroutineRunner coroutineRunner, LoadingCurtain curtain)
+        {
+            StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), curtain, AllServices.Container);
+        }
+
+    }
 }

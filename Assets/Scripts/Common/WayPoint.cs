@@ -1,12 +1,16 @@
+using Assets.Scripts.OldEnemy;
 using UnityEngine;
 
-public class WayPoint : MonoBehaviour
+namespace Assets.Scripts.Common
 {
-    private void OnTriggerEnter(Collider other)
+    public class WayPoint : MonoBehaviour
     {
-        if (other.TryGetComponent(out EnemyMovement enemyMovement))
+        private void OnTriggerEnter(Collider other)
         {
-            enemyMovement.ChangeWay();
+            if (other.TryGetComponent(out EnemyMovement enemyMovement))
+            {
+                enemyMovement.ChangeWay();
+            }
         }
     }
 }

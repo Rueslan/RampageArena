@@ -1,19 +1,22 @@
 ﻿using System;
 
-[Serializable]
-public class PositionOnLevel
+namespace Assets.Scripts.Data
 {
-    public string Level;
-    public Vector3Data Position;
-
-    public PositionOnLevel(string initialLevel)
+    [Serializable]
+    public class PositionOnLevel
     {
-        Level = initialLevel;
-    }
+        public string Level;
+        public Vector3Data Position;
 
-    public PositionOnLevel(string level, Vector3Data position)
-    {
-        Level = level;
-        Position = position;
+        public PositionOnLevel(string initialLevel)
+        {
+            Level = initialLevel;
+        }
+
+        public PositionOnLevel(string level, Vector3Data position)
+        {
+            Level = level;
+            Position = position;
+        }
     }
 }

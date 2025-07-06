@@ -6,6 +6,7 @@ using Assets.Scripts.Logic;
 using Assets.Scripts.Player;
 using Assets.Scripts.UI;
 using System;
+using Assets.Scripts.Services;
 using Assets.Scripts.StaticData;
 using UnityEngine;
 using UnityEngine.SceneManagement;

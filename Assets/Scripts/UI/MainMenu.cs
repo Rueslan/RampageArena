@@ -1,23 +1,27 @@
+using Assets.Scripts.Common;
 using UnityEngine;
 
-public class MainMenu : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    private LevelLoader levelLoader;
-
-    private void Awake()
+    public class MainMenu : MonoBehaviour
     {
-        levelLoader = GetComponent<LevelLoader>();
-    }
+        private LevelLoader levelLoader;
 
-    public void PlayGame()
-    {
-        PlayersList._playersOnline.Clear();
-        levelLoader.LoadLevel(1);
-        Time.timeScale = 1;
-    }
+        private void Awake()
+        {
+            levelLoader = GetComponent<LevelLoader>();
+        }
 
-    public void Exit()
-    {
-        Application.Quit();
+        public void PlayGame()
+        {
+            PlayersList._playersOnline.Clear();
+            levelLoader.LoadLevel(1);
+            Time.timeScale = 1;
+        }
+
+        public void Exit()
+        {
+            Application.Quit();
+        }
     }
 }

@@ -1,18 +1,21 @@
 using UnityEngine;
 using Zenject;
 
-public class PauseButton : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    private PausePanel _pausePanel;
-
-    [Inject]
-    public void Construct(PausePanel pausePanel)
+    public class PauseButton : MonoBehaviour
     {
-        _pausePanel = pausePanel;
-    }
+        private PausePanel _pausePanel;
 
-    public void ActivatePausePanel()
-    {
-        _pausePanel.PauseToggle();
+        [Inject]
+        public void Construct(PausePanel pausePanel)
+        {
+            _pausePanel = pausePanel;
+        }
+
+        public void ActivatePausePanel()
+        {
+            _pausePanel.PauseToggle();
+        }
     }
 }

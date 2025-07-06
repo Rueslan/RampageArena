@@ -1,18 +1,21 @@
 using System;
 
-[Serializable]
-public class PlayerProgress
+namespace Assets.Scripts.Data
 {
-    public State PlayerState;
-    public WorldData WorldData;
-    public Stats PlayerStats;
-    public KillData KillData;
-
-    public PlayerProgress(string initialLevel)
+    [Serializable]
+    public class PlayerProgress
     {
-        WorldData = new WorldData(initialLevel);
-        PlayerState = new State();
-        PlayerStats = new Stats();
-        KillData = new KillData();
+        public State PlayerState;
+        public WorldData WorldData;
+        public Stats PlayerStats;
+        public KillData KillData;
+
+        public PlayerProgress(string initialLevel)
+        {
+            WorldData = new WorldData(initialLevel);
+            PlayerState = new State();
+            PlayerStats = new Stats();
+            KillData = new KillData();
+        }
     }
 }

@@ -3,6 +3,8 @@ using Assets.Scripts.Infrastructure.Factory;
 using Assets.Scripts.Infrastructure.Services;
 using Assets.Scripts.Infrastructure.Services.PersistentProgress;
 using Assets.Scripts.Infrastructure.Services.SaveLoad;
+using Assets.Scripts.Services;
+using Assets.Scripts.Services.Input;
 using Assets.Scripts.StaticData;
 using UnityEngine;
 

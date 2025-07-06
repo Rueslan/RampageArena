@@ -3,30 +3,33 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
 
-public class AttackButtonHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+namespace Assets.Scripts.UI
 {
-    private PlayerAttack _playerAttackHandler;
-    private bool _pressed;
-
-    [Inject]
-    public void Construct(PlayerAttack playerAttackHandler)
+    public class AttackButtonHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        _playerAttackHandler = playerAttackHandler;
-    }
+        private PlayerAttack _playerAttackHandler;
+        private bool _pressed;
 
-    private void Update()
-    {
-        if (_pressed)
-            _playerAttackHandler.OnAttack();
-    }
+        [Inject]
+        public void Construct(PlayerAttack playerAttackHandler)
+        {
+            _playerAttackHandler = playerAttackHandler;
+        }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-       _pressed = true;
-    }
+        private void Update()
+        {
+            if (_pressed)
+                _playerAttackHandler.OnAttack();
+        }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        _pressed = false;
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            _pressed = true;
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            _pressed = false;
+        }
     }
 }
