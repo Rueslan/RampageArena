@@ -12,7 +12,6 @@ TagManager:
   - PausePanel
   - InitialPoint
   - FxTemporaire
-  - EnemySpawner
   layers:
   - Default
   - TransparentFX

@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class BloodSplashHandler : MonoBehaviour
+namespace Assets.Scripts.CFXR
 {
-    [SerializeField] GameObject _splashPrefab;
-
-    public void SplashBlood(Vector3 position, Vector3 direction)
+    public class BloodSplashHandler : MonoBehaviour
     {
-        position.y += 1.5f;
-        Instantiate(_splashPrefab, position, Quaternion.LookRotation(direction));
+        [SerializeField] GameObject _splashPrefab;
+
+        public void SplashBlood(Vector3 position, Vector3 direction)
+        {
+            position.y += 1.5f;
+            Instantiate(_splashPrefab, position, Quaternion.LookRotation(direction));
+        }
     }
 }

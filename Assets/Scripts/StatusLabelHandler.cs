@@ -1,28 +1,30 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using Zenject;
 
-public class StatusLabelHandler : MonoBehaviour
+namespace Assets.Scripts
 {
-    [SerializeField] private TMP_Text _labelText;
-
-    public void PlayStatusAnimation(string text)
+    public class StatusLabelHandler : MonoBehaviour
     {
-        gameObject.SetActive(true);
-        _labelText.rectTransform.position = Vector3.zero;
-        _labelText.text = text;
-        StartCoroutine(labelAnimation());
-    }
+        [SerializeField] private TMP_Text _labelText;
 
-    private IEnumerator labelAnimation()
-    {
-        while (_labelText.rectTransform.position.y < 100)
+        public void PlayStatusAnimation(string text)
         {
-            _labelText.rectTransform.position += Vector3.up * 2;
-            yield return new WaitForSeconds(0.01f);
+            gameObject.SetActive(true);
+            _labelText.rectTransform.position = Vector3.zero;
+            _labelText.text = text;
+            StartCoroutine(labelAnimation());
         }
-        gameObject.SetActive(false);
-    }
 
+        private IEnumerator labelAnimation()
+        {
+            while (_labelText.rectTransform.position.y < 100)
+            {
+                _labelText.rectTransform.position += Vector3.up * 2;
+                yield return new WaitForSeconds(0.01f);
+            }
+            gameObject.SetActive(false);
+        }
+
+    }
 }

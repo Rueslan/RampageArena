@@ -1,22 +1,26 @@
-using UnityEngine.AI;
+using Assets.Scripts.Abstract;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Enemy : PlayerBase
+namespace Assets.Scripts.OldEnemy
 {
-    [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private EnemyMovement _enemyMovement;
-    [SerializeField] private EnemyAttackHandler _enemyAttackHandler;
-
-    public void Death()
+    public class Enemy : PlayerBase
     {
-        DisableEnemy();
-        //base.Death();
-    }
+        [SerializeField] private NavMeshAgent _agent;
+        [SerializeField] private EnemyMovement _enemyMovement;
+        [SerializeField] private EnemyAttackHandler _enemyAttackHandler;
 
-    private void DisableEnemy()
-    {
-        _agent.enabled = false;
-        _enemyMovement.enabled = false;
-        _enemyAttackHandler.enabled = false;
+        public void Death()
+        {
+            DisableEnemy();
+            //base.Death();
+        }
+
+        private void DisableEnemy()
+        {
+            _agent.enabled = false;
+            _enemyMovement.enabled = false;
+            _enemyAttackHandler.enabled = false;
+        }
     }
 }

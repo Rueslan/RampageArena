@@ -1,8 +1,11 @@
 ﻿using System;
 
-[Serializable]
-public class Stats
+namespace Assets.Scripts.Data
 {
-    public float Damage;
-    public float DamageRadius;
+    [Serializable]
+    public class Stats
+    {
+        public float Damage;
+        public float DamageRadius;
+    }
 }

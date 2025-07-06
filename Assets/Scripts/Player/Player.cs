@@ -1,3 +1,4 @@
+using Assets.Scripts.Abstract;
 using UnityEngine;
 
 namespace Assets.Scripts.Player

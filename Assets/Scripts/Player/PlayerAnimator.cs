@@ -1,5 +1,5 @@
 using System;
-using Scripts.Logic;
+using Assets.Scripts.Logic;
 using UnityEngine;
 
 namespace Assets.Scripts.Player

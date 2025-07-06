@@ -1,4 +1,4 @@
-namespace Scripts.Logic
+namespace Assets.Scripts.Logic
 {
   public enum AnimatorState
   {

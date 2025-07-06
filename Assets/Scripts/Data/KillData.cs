@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-[Serializable]
-public class KillData
+namespace Assets.Scripts.Data
 {
-    public List<string> ClearedSpawners = new List<string>();
+    [Serializable]
+    public class KillData
+    {
+        public List<string> ClearedSpawners = new List<string>();
+    }
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6717262841752246517
+--- !u!1 &4845496979574715293
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,55 +8,54 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1591890414218846655}
-  - component: {fileID: 6731523450539672257}
-  - component: {fileID: 1371662680987508998}
+  - component: {fileID: 3765448129438873066}
+  - component: {fileID: 2961855472223210233}
+  - component: {fileID: 4136561397773583822}
   m_Layer: 0
-  m_Name: LichSpawner
-  m_TagString: EnemySpawner
+  m_Name: SpawnMarker
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1591890414218846655
+--- !u!4 &3765448129438873066
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6717262841752246517}
+  m_GameObject: {fileID: 4845496979574715293}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.31, y: 3.66, z: -23.69}
+  m_LocalPosition: {x: -7.68, y: -14.59, z: -4.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6731523450539672257
+--- !u!114 &2961855472223210233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6717262841752246517}
+  m_GameObject: {fileID: 4845496979574715293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 414aa8a4405b4b24f82963605a59d205, type: 3}
+  m_Script: {fileID: 11500000, guid: d03904dd6265acb4ba22c427af38bfa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MonsterTypeId: 0
-  Slain: 0
---- !u!114 &1371662680987508998
+--- !u!114 &4136561397773583822
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6717262841752246517}
+  m_GameObject: {fileID: 4845496979574715293}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49494d9f9d5c24548827a8008963ee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: UnityEngine.SceneManagement.Scene_f26296fc-961f-45f3-ba33-d0ee0ff729ef
+  Id: UnityEngine.SceneManagement.Scene_4231dca1-b694-4842-86c7-93f3cc78ec44

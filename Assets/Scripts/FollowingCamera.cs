@@ -1,46 +1,49 @@
 using UnityEngine;
 
-public class FollowingCamera : MonoBehaviour
+namespace Assets.Scripts
 {
-    [Header("Camera properties")]
-    public float RotationAngleX = 55;
-    public float Distance = 20;
-    public float OffsetY = 10;
-
-    [SerializeField]
-    private Transform _following;
-
-    private void Awake()
+    public class FollowingCamera : MonoBehaviour
     {
-        EventManager.PlayerDead.AddListener(DisableCamera);
-        EventManager.PlayerRestore.AddListener(EnableCamera);
-    }
+        [Header("Camera properties")]
+        public float RotationAngleX = 55;
+        public float Distance = 20;
+        public float OffsetY = 10;
 
-    private void LateUpdate()
-    {
-        if (_following == null)
-            return;
+        [SerializeField]
+        private Transform _following;
 
-        Quaternion rotation = Quaternion.Euler(RotationAngleX, 0, 0);
-        Vector3 followingPosition = _following.position;
-        followingPosition.y += OffsetY;
-        Vector3 position = rotation * new Vector3(0, 0, -Distance) + followingPosition;
+        private void Awake()
+        {
+            EventManager.PlayerDead.AddListener(DisableCamera);
+            EventManager.PlayerRestore.AddListener(EnableCamera);
+        }
 
-        transform.rotation = rotation;
-        transform.position = position;
-    }
+        private void LateUpdate()
+        {
+            if (_following == null)
+                return;
 
-    public void Follow(GameObject followingObject)
-    {
-        _following = followingObject.transform;
-    }
+            Quaternion rotation = Quaternion.Euler(RotationAngleX, 0, 0);
+            Vector3 followingPosition = _following.position;
+            followingPosition.y += OffsetY;
+            Vector3 position = rotation * new Vector3(0, 0, -Distance) + followingPosition;
 
-    private void DisableCamera()
-    {
-        enabled = false;
-    }
-    private void EnableCamera()
-    {
-        enabled = true;
+            transform.rotation = rotation;
+            transform.position = position;
+        }
+
+        public void Follow(GameObject followingObject)
+        {
+            _following = followingObject.transform;
+        }
+
+        private void DisableCamera()
+        {
+            enabled = false;
+        }
+        private void EnableCamera()
+        {
+            enabled = true;
+        }
     }
 }

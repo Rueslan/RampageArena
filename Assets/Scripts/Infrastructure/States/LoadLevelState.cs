@@ -6,7 +6,10 @@ using Assets.Scripts.Logic;
 using Assets.Scripts.Player;
 using Assets.Scripts.UI;
 using System;
+using Assets.Scripts.Services;
+using Assets.Scripts.StaticData;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Infrastructure.States
 {
@@ -19,14 +22,16 @@ namespace Assets.Scripts.Infrastructure.States
         private readonly LoadingCurtain _curtain;
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _progressService;
+        private readonly IStaticDataService _staticData;
 
-        public LoadLevelState(GameStateMachine stateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory, IPersistentProgressService progressService)
+        public LoadLevelState(GameStateMachine stateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory, IPersistentProgressService progressService, IStaticDataService staticData)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
             _curtain = curtain;
             _gameFactory = gameFactory;
             _progressService = progressService;
+            _staticData = staticData;
         }
 
         public void Enter(string sceneName)
@@ -62,11 +67,14 @@ namespace Assets.Scripts.Infrastructure.States
 
         private void InitSpawners()
         {
-            foreach (GameObject spawnerObject in GameObject.FindGameObjectsWithTag(ENEMY_SPAWNER_TAG))
-            {
-                var spawner = spawnerObject.GetComponent<EnemySpawner>();
-                _gameFactory.Register(spawner);
-            }
+            string sceneKey = SceneManager.GetActiveScene().name;
+            LevelStaticData levelData =_staticData.ForLevel(sceneKey);
+
+            if (levelData is not null)
+                foreach (var spawnerData in levelData.EnemySpawners)
+                {
+                    _gameFactory.CreateSpawner(spawnerData.Position, spawnerData.Id, spawnerData.MonsterTypeId);
+                }
         }
 
         private GameObject InitPlayer() =>

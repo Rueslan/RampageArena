@@ -1,7 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-public interface IJoystickForMovement
+namespace Assets.Scripts.Interfaces
 {
-    event Action<Vector2> OnJoystickDrag;
+    public interface IJoystickForMovement
+    {
+        event Action<Vector2> OnJoystickDrag;
+    }
 }

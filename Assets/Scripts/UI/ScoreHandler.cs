@@ -1,27 +1,29 @@
 using TMPro;
 using UnityEngine;
-using Zenject;
 
-public class ScoreHandler : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    private TMP_Text _scoreText;
-    private int _score = 0;
-
-    public void Construct(TMP_Text scoreText)
+    public class ScoreHandler : MonoBehaviour
     {
-        _scoreText = scoreText;
-    }
+        private TMP_Text _scoreText;
+        private int _score = 0;
 
-    private void Awake()
-    {
-        //EventManager.EnemyDead.AddListener(AddScore);
-    }
-
-    private void AddScore(GameObject killer, GameObject victum)
-    {
-        if (killer == gameObject)
+        public void Construct(TMP_Text scoreText)
         {
-            _scoreText.text = $"{++_score}";
-        }        
+            _scoreText = scoreText;
+        }
+
+        private void Awake()
+        {
+            //EventManager.EnemyDead.AddListener(AddScore);
+        }
+
+        private void AddScore(GameObject killer, GameObject victum)
+        {
+            if (killer == gameObject)
+            {
+                _scoreText.text = $"{++_score}";
+            }        
+        }
     }
 }

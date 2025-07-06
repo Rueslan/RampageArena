@@ -3,25 +3,28 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LevelLoader : MonoBehaviour
+namespace Assets.Scripts.Common
 {
-    [SerializeField] private GameObject loadingPanel;
-    [SerializeField] private Slider slider;
-
-    public void LoadLevel(int sceneIndex)
+    public class LevelLoader : MonoBehaviour
     {
-        StartCoroutine(LoadAsunchronously(sceneIndex)); 
-    }
+        [SerializeField] private GameObject loadingPanel;
+        [SerializeField] private Slider slider;
 
-    private IEnumerator LoadAsunchronously(int sceneIndex)
-    {
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneIndex);
-        loadingPanel.SetActive(true);
-        while (asyncOperation.isDone == false)
+        public void LoadLevel(int sceneIndex)
         {
-            float progress = asyncOperation.progress;
-            slider.value = progress;
-            yield return null;
+            StartCoroutine(LoadAsunchronously(sceneIndex)); 
+        }
+
+        private IEnumerator LoadAsunchronously(int sceneIndex)
+        {
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneIndex);
+            loadingPanel.SetActive(true);
+            while (asyncOperation.isDone == false)
+            {
+                float progress = asyncOperation.progress;
+                slider.value = progress;
+                yield return null;
+            }
         }
     }
 }

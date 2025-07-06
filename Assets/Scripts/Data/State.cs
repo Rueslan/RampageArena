@@ -1,10 +1,13 @@
 ﻿using System;
 
-[Serializable]
-public class State
+namespace Assets.Scripts.Data
 {
-    public float CurrentHP;
-    public float MaxHP;
+    [Serializable]
+    public class State
+    {
+        public float CurrentHP;
+        public float MaxHP;
 
-    public void ResetHP() => CurrentHP = MaxHP;
+        public void ResetHP() => CurrentHP = MaxHP;
+    }
 }

@@ -1,6 +1,7 @@
 using Assets.Scripts.Infrastructure.Services.PersistentProgress;
 using Assets.Scripts.Interfaces;
 using System;
+using Assets.Scripts.Data;
 using UnityEngine;
 
 namespace Assets.Scripts.Player

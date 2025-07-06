@@ -1,10 +1,14 @@
 ﻿using Assets.Scripts.Infrastructure.Services;
+using Assets.Scripts.StaticData;
 
-namespace Assets.Scripts.StaticData
+namespace Assets.Scripts.Services
 {
     public interface IStaticDataService : IService
     {
         MonsterStaticData ForMonster(MonsterTypeId typeId);
-        void LoadMonsters();
+
+        LevelStaticData ForLevel(string sceneKey);
+
+        void Load();
     }
 }
