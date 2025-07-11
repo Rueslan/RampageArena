@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.UI;
 using System;
 using System.Collections;
+using Assets.Scripts.UI.Elements;
 using UnityEngine;
 using UnityEngine.AI;
 

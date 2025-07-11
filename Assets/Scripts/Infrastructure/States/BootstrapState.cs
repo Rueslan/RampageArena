@@ -6,6 +6,8 @@ using Assets.Scripts.Infrastructure.Services.SaveLoad;
 using Assets.Scripts.Services;
 using Assets.Scripts.Services.Input;
 using Assets.Scripts.StaticData;
+using Assets.Scripts.UI.Services.Factory;
+using Assets.Scripts.UI.Services.Windows;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.States
@@ -23,7 +25,7 @@ namespace Assets.Scripts.Infrastructure.States
             _sceneLoader = sceneLoader;
             _services = services;
 
-            RegisterServicies();
+            RegisterServices();
         }
 
         public void Enter()
@@ -39,15 +41,30 @@ namespace Assets.Scripts.Infrastructure.States
             _stateMachine.Enter<LoadProgressState>();
 
 
-        private void RegisterServicies()
+        private void RegisterServices()
         {
             RegisterInputService();
             IStaticDataService staticDataService = RegisterStaticData();
             IAssets assets = RegisterAssetsProvider();
             IRandomService randomService = RegisterRandomService();
             IPersistentProgressService progressService = RegisterProgressService();
-            _services.RegisterSingle<IGameFactory>(new GameFactory(assets, staticDataService, randomService, progressService));
-            _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>(), _services.Single<IGameFactory>()));
+            IUIFactory uiFactory = RegisterUIFactory(assets, staticDataService, progressService);
+            IWindowService windowService = RegisterWindowService(uiFactory);
+            _services.RegisterSingle<IGameFactory>(new GameFactory(assets, staticDataService, randomService, progressService, windowService));
+            _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(progressService, _services.Single<IGameFactory>()));
+        }
+
+        private IWindowService RegisterWindowService(IUIFactory uiFactory)
+        {
+            IWindowService windowService = new WindowService(uiFactory);
+            return windowService;
+        }
+
+        private IUIFactory RegisterUIFactory(IAssets assets, IStaticDataService staticDataService, IPersistentProgressService progressService)
+        {
+            IUIFactory uiFactory = new UiFactory(assets, staticDataService, progressService);
+            _services.RegisterSingle(uiFactory);
+            return uiFactory;
         }
 
         private IPersistentProgressService RegisterProgressService()
