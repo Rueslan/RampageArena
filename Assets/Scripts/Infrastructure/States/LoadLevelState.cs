@@ -8,6 +8,8 @@ using Assets.Scripts.UI;
 using System;
 using Assets.Scripts.Services;
 using Assets.Scripts.StaticData;
+using Assets.Scripts.UI.Elements;
+using Assets.Scripts.UI.Services.Factory;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,8 +25,9 @@ namespace Assets.Scripts.Infrastructure.States
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _progressService;
         private readonly IStaticDataService _staticData;
+        private readonly IUIFactory _uiFactory;
 
-        public LoadLevelState(GameStateMachine stateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory, IPersistentProgressService progressService, IStaticDataService staticData)
+        public LoadLevelState(GameStateMachine stateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory, IPersistentProgressService progressService, IStaticDataService staticData, IUIFactory uiFactory)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -32,6 +35,7 @@ namespace Assets.Scripts.Infrastructure.States
             _gameFactory = gameFactory;
             _progressService = progressService;
             _staticData = staticData;
+            _uiFactory = uiFactory;
         }
 
         public void Enter(string sceneName)
@@ -46,10 +50,16 @@ namespace Assets.Scripts.Infrastructure.States
 
         private void OnLoaded()
         {
+            InitUIRooT();
             InitGameWorld();
             InformProgressReaders();
 
             _stateMachine.Enter<GameLoopState>();
+        }
+
+        private void InitUIRooT()
+        {
+            _uiFactory.CreateUIRoot();
         }
 
         private void InformProgressReaders() => 
