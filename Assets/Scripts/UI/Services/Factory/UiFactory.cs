@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Infrastructure.AssetManagment;
+using Assets.Scripts.Infrastructure.Services.Ads;
 using Assets.Scripts.Infrastructure.Services.PersistentProgress;
 using Assets.Scripts.Services;
 using Assets.Scripts.StaticData.Windows;
@@ -15,19 +16,21 @@ namespace Assets.Scripts.UI.Services.Factory
         private Transform  _uiRoot;
         private readonly IStaticDataService  _staticData;
         private readonly IPersistentProgressService _progressService;
+        private readonly IAdsService _adsService;
 
-        public UiFactory(IAssets assets, IStaticDataService staticData, IPersistentProgressService progressService)
+        public UiFactory(IAssets assets, IStaticDataService staticData, IPersistentProgressService progressService, IAdsService adsService)
         {
             _assets = assets;
             _staticData = staticData;
             _progressService = progressService;
+            _adsService = adsService;
         }
 
         public void CreateShop()
         {
             WindowConfig config = _staticData.ForWindow(WindowId.Shop);
-            WindowBase window = Object.Instantiate(config.Prefab, _uiRoot);
-            window.Construct(_progressService);
+            ShopWindow window = Object.Instantiate(config.Prefab, _uiRoot) as ShopWindow;
+            window.Construct(_adsService, _progressService);
         }
 
         public void CreateUIRoot() => 

@@ -30,6 +30,12 @@ namespace Assets.Scripts.Data
             Changed?.Invoke();
         }
 
+        public void Add(int loot)
+        {
+            Collected += loot;
+            Changed?.Invoke();
+        }
+
         public void LoadProgress(PlayerProgress progress)
         {
             LootPositions = progress.WorldData.LootData.LootPositions;

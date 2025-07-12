@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Infrastructure.AssetManagment;
 using Assets.Scripts.Infrastructure.Factory;
 using Assets.Scripts.Infrastructure.Services;
+using Assets.Scripts.Infrastructure.Services.Ads;
 using Assets.Scripts.Infrastructure.Services.PersistentProgress;
 using Assets.Scripts.Infrastructure.Services.SaveLoad;
 using Assets.Scripts.Services;
@@ -44,14 +45,23 @@ namespace Assets.Scripts.Infrastructure.States
         private void RegisterServices()
         {
             RegisterInputService();
+            IAdsService adsService = RegisterAdsService();
             IStaticDataService staticDataService = RegisterStaticData();
             IAssets assets = RegisterAssetsProvider();
             IRandomService randomService = RegisterRandomService();
             IPersistentProgressService progressService = RegisterProgressService();
-            IUIFactory uiFactory = RegisterUIFactory(assets, staticDataService, progressService);
+            IUIFactory uiFactory = RegisterUIFactory(assets, staticDataService, progressService, adsService);
             IWindowService windowService = RegisterWindowService(uiFactory);
             _services.RegisterSingle<IGameFactory>(new GameFactory(assets, staticDataService, randomService, progressService, windowService));
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(progressService, _services.Single<IGameFactory>()));
+        }
+
+        private IAdsService RegisterAdsService()
+        {
+            var adsService = new AdsService();
+            _services.RegisterSingle<IAdsService>(adsService);
+            adsService.Initialize();
+            return adsService;
         }
 
         private IWindowService RegisterWindowService(IUIFactory uiFactory)
@@ -60,9 +70,10 @@ namespace Assets.Scripts.Infrastructure.States
             return windowService;
         }
 
-        private IUIFactory RegisterUIFactory(IAssets assets, IStaticDataService staticDataService, IPersistentProgressService progressService)
+        private IUIFactory RegisterUIFactory(IAssets assets, IStaticDataService staticDataService,
+            IPersistentProgressService progressService, IAdsService adsService)
         {
-            IUIFactory uiFactory = new UiFactory(assets, staticDataService, progressService);
+            IUIFactory uiFactory = new UiFactory(assets, staticDataService, progressService, adsService);
             _services.RegisterSingle(uiFactory);
             return uiFactory;
         }
