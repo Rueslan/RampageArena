@@ -5,6 +5,7 @@ using Assets.Scripts.Interfaces;
 using Assets.Scripts.StaticData;
 using Assets.Scripts.UI;
 using System.Collections.Generic;
+using Assets.Scripts.Infrastructure.States;
 using Assets.Scripts.Logic;
 using Assets.Scripts.Logic.EnemySpawners;
 using Assets.Scripts.Services;
@@ -22,19 +23,21 @@ namespace Assets.Scripts.Infrastructure.Factory
         private readonly IRandomService _randomService;
         private readonly IPersistentProgressService _progressService;
         private readonly IWindowService _windowService;
+        private readonly IGameStateMachine _gameStateMachine;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
 
         private GameObject PlayerGameObject { get; set; }
 
-        public GameFactory(IAssets assets, IStaticDataService staticData, IRandomService randomService, IPersistentProgressService progressService, IWindowService windowService)
+        public GameFactory(IAssets assets, IStaticDataService staticData, IRandomService randomService, IPersistentProgressService progressService, IWindowService windowService, IGameStateMachine gameStateMachine)
         {
             _assets = assets;
             _staticData = staticData;
             _randomService = randomService;
             _progressService = progressService;
             _windowService = windowService;
+            _gameStateMachine = gameStateMachine;
         }
 
         public GameObject CreateHUD()
@@ -52,12 +55,8 @@ namespace Assets.Scripts.Infrastructure.Factory
             return hud;
         }
 
-        public GameObject CreatePlayer(GameObject at)
-        {
-            PlayerGameObject = InstantiateRegistered(AssetPath.PLAYER_PREFAB_PATH, at.transform.position);
-
-            return PlayerGameObject;
-        }
+        public GameObject CreatePlayer(Vector3 at)=>
+            PlayerGameObject = InstantiateRegistered(AssetPath.PLAYER_PREFAB_PATH, at);
 
         public GameObject CreateMonster(MonsterTypeId monsterTypeId, Transform parent)
         {
@@ -105,6 +104,14 @@ namespace Assets.Scripts.Infrastructure.Factory
             spawner.Construct(this);
             spawner.Id = spawnerId;
             spawner.MonsterTypeId = monsterTypeId;
+        }
+
+        public void CreateTransfer(Vector3 transferDataPosition, string transferDataTransferTo)
+        {
+            LevelTransferTrigger transferTrigger = InstantiateRegistered(AssetPath.TRANSFER, transferDataPosition)
+                .GetComponent<LevelTransferTrigger>();
+
+            transferTrigger.Construct(_gameStateMachine);
         }
 
         public void CleanUp()

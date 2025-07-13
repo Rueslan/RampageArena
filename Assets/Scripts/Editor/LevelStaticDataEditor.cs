@@ -11,6 +11,9 @@ namespace Assets.Scripts.Editor
     [CustomEditor(typeof(LevelStaticData))]
     public class LevelStaticDataEditor : UnityEditor.Editor
     {
+        private const string InitialPointTag = "InitialPoint";
+        private const string TransferTag = "Transfer";
+
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
@@ -25,6 +28,11 @@ namespace Assets.Scripts.Editor
                         .ToList();
 
                 levelData.LevelKey = SceneManager.GetActiveScene().name;
+                levelData.InitialPlayerPosition = GameObject.FindWithTag(InitialPointTag).transform.position;
+                levelData.Transfers =
+                    FindObjectsOfType<LevelTransferTrigger>()
+                        .Select(x => new LevelTransferData(x.TransferTo, x.transform.position))
+                        .ToList();
             }
 
             EditorUtility.SetDirty(target);

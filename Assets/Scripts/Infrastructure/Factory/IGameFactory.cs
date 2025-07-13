@@ -13,9 +13,10 @@ namespace Assets.Scripts.Infrastructure.Factory
         public List<ISavedProgressReader> ProgressReaders { get; }
         public List<ISavedProgress> ProgressWriters { get; }
         GameObject CreateHUD();
-        GameObject CreatePlayer(GameObject at);
+        GameObject CreatePlayer(Vector3 at);
         GameObject CreateMonster(MonsterTypeId monsterTypeId, Transform parent);
         LootPiece CreateLoot();
         void CreateSpawner(Vector3 at, string spawnerId, MonsterTypeId monsterTypeId);
+        void CreateTransfer(Vector3 transferDataPosition, string transferDataTransferTo);
     }
 }

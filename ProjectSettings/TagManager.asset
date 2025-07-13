@@ -12,6 +12,7 @@ TagManager:
   - PausePanel
   - InitialPoint
   - FxTemporaire
+  - Transfer
   layers:
   - Default
   - TransparentFX

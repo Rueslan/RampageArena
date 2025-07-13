@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae2a5aed2db3c24ca05a5f6f711b7b7, type: 3}
+  m_Name: House1
+  m_EditorClassIdentifier: 
+  LevelKey: House1
+  EnemySpawners:
+  - Id: UnityEngine.SceneManagement.Scene_4231dca1-b694-4842-86c7-93f3cc78ec44
+    MonsterTypeId: 0
+    Position: {x: -12.204664, y: 0, z: -15.471046}
+  - Id: UnityEngine.SceneManagement.Scene_da5fee6a-f722-452a-99ce-6d3f28aaaaa3
+    MonsterTypeId: 0
+    Position: {x: -28.96552, y: 0, z: 24.060186}
+  Transfers:
+  - Position: {x: 9.141167, y: 1, z: 25.219994}
+    TransferTo: SimpleScene
+  InitialPlayerPosition: {x: 6.82765, y: 1, z: -4.6238346}

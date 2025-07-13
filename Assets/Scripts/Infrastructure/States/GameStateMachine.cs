@@ -14,7 +14,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.States
 {
-    public class GameStateMachine
+    public class GameStateMachine : IGameStateMachine
     {
         private readonly Dictionary<Type, IState> _states;
         private IState _activeState;

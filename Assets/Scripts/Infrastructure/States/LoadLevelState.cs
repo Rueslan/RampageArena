@@ -17,8 +17,7 @@ namespace Assets.Scripts.Infrastructure.States
 {
     public class LoadLevelState : IPayloadedState<string>
     {
-        private const string INITIAL_POINT_TAG = "InitialPoint";
-        private const string ENEMY_SPAWNER_TAG = "EnemySpawner";
+        private const string EnemySpawnerTag = "EnemySpawner";
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingCurtain _curtain;
@@ -57,10 +56,8 @@ namespace Assets.Scripts.Infrastructure.States
             _stateMachine.Enter<GameLoopState>();
         }
 
-        private void InitUIRooT()
-        {
+        private void InitUIRooT() => 
             _uiFactory.CreateUIRoot();
-        }
 
         private void InformProgressReaders() => 
             _gameFactory.ProgressReaders.ForEach(x => x.LoadProgress(_progressService.PlayerProgress));
@@ -68,27 +65,40 @@ namespace Assets.Scripts.Infrastructure.States
 
         private void InitGameWorld()
         {
-            InitSpawners();
+            var levelData = LevelStaticData();
 
-            GameObject player = InitPlayer();
+            InitSpawners(levelData);
+            InitTransfers(levelData);
+            GameObject player = InitPlayer(levelData);
             InitHUD(player);
             CameraFollow(player);
         }
 
-        private void InitSpawners()
+        private void InitTransfers(LevelStaticData levelData)
         {
-            string sceneKey = SceneManager.GetActiveScene().name;
-            LevelStaticData levelData =_staticData.ForLevel(sceneKey);
+            foreach (LevelTransferData transferData in levelData.Transfers)
+            {
+                _gameFactory.CreateTransfer(transferData.Position, transferData.TransferTo);
+            }
+        }
 
+        private LevelStaticData LevelStaticData()=>
+            _staticData.ForLevel(SceneManager.GetActiveScene().name);
+        
+
+        private void InitSpawners(LevelStaticData levelData)
+        {
             if (levelData is not null)
-                foreach (var spawnerData in levelData.EnemySpawners)
+                foreach (EnemySpawnerData spawnerData in levelData.EnemySpawners)
                 {
                     _gameFactory.CreateSpawner(spawnerData.Position, spawnerData.Id, spawnerData.MonsterTypeId);
                 }
         }
 
-        private GameObject InitPlayer() =>
-            _gameFactory.CreatePlayer(GameObject.FindWithTag(INITIAL_POINT_TAG));
+        private GameObject InitPlayer(LevelStaticData levelData)
+        {
+            return _gameFactory.CreatePlayer(levelData.InitialPlayerPosition);
+        }
 
         private void InitHUD(GameObject player)
         {

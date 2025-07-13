@@ -45,6 +45,7 @@ namespace Assets.Scripts.Infrastructure.States
         private void RegisterServices()
         {
             RegisterInputService();
+            _services.RegisterSingle<IGameStateMachine>(_stateMachine);
             IAdsService adsService = RegisterAdsService();
             IStaticDataService staticDataService = RegisterStaticData();
             IAssets assets = RegisterAssetsProvider();
@@ -52,7 +53,7 @@ namespace Assets.Scripts.Infrastructure.States
             IPersistentProgressService progressService = RegisterProgressService();
             IUIFactory uiFactory = RegisterUIFactory(assets, staticDataService, progressService, adsService);
             IWindowService windowService = RegisterWindowService(uiFactory);
-            _services.RegisterSingle<IGameFactory>(new GameFactory(assets, staticDataService, randomService, progressService, windowService));
+            _services.RegisterSingle<IGameFactory>(new GameFactory(assets, staticDataService, randomService, progressService, windowService, _stateMachine));
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(progressService, _services.Single<IGameFactory>()));
         }
 

@@ -9,5 +9,9 @@ namespace Assets.Scripts.StaticData
         public string LevelKey;
 
         public List<EnemySpawnerData> EnemySpawners;
+
+        public List<LevelTransferData> Transfers;
+
+        public Vector3 InitialPlayerPosition;
     }
 }
