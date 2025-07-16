@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 3905546520763601632}
   - component: {fileID: 2936561747298359236}
   - component: {fileID: 6618439015035129128}
-  - component: {fileID: 7255407329906338682}
+  - component: {fileID: 3379228292631768415}
   m_Layer: 0
   m_Name: FreeLichPBR
   m_TagString: Untagged
@@ -595,7 +595,7 @@ MonoBehaviour:
   HPbar: {fileID: 7552466867791541125}
   DeathFx: {fileID: 7226888052703040409, guid: 7ec363c8df426644ea85f8d6d570561c, type: 3}
   destroyTime: 3
---- !u!114 &7255407329906338682
+--- !u!114 &3379228292631768415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -604,7 +604,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1500939411536426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d0b41b4b03e73b478579537283fa501, type: 3}
+  m_Script: {fileID: 11500000, guid: c3cdcd6ba9429444abc2f9e43d739a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HPBar: {fileID: 7552466867791541125}
@@ -1523,10 +1523,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8998520792504156160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d85149f4b4ebf4fa041b0918f73704, type: 3}
+  m_Script: {fileID: 11500000, guid: 597258e1f9b635f46b6a3da563f8c075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImageCurrent: {fileID: 2011415160390205144}
+  ImageCurrent: {fileID: 0}
   HealthText: {fileID: 0}
   gradient:
     serializedVersion: 2

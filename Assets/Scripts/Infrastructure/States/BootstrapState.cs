@@ -100,9 +100,10 @@ namespace Assets.Scripts.Infrastructure.States
 
         private IAssets RegisterAssetsProvider()
         {
-            IAssets assets = new AssetProvider();
-            _services.RegisterSingle(assets);
-            return assets;
+            IAssets assetProvider = new AssetProvider();
+            assetProvider.Initialize();
+            _services.RegisterSingle(assetProvider);
+            return assetProvider;
         }
 
         private IStaticDataService RegisterStaticData()

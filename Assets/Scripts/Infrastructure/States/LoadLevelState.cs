@@ -6,6 +6,7 @@ using Assets.Scripts.Logic;
 using Assets.Scripts.Player;
 using Assets.Scripts.UI;
 using System;
+using System.Threading.Tasks;
 using Assets.Scripts.Services;
 using Assets.Scripts.StaticData;
 using Assets.Scripts.UI.Elements;
@@ -41,16 +42,17 @@ namespace Assets.Scripts.Infrastructure.States
         {
             _curtain.Show();
             _gameFactory.CleanUp();
+            _gameFactory.WarmUp();
             _sceneLoader.Load(sceneName, OnLoaded);
         }
 
         public void Exit() =>
             _curtain.Hide();
 
-        private void OnLoaded()
+        private async void OnLoaded()
         {
             InitUIRooT();
-            InitGameWorld();
+            await InitGameWorld();
             InformProgressReaders();
 
             _stateMachine.Enter<GameLoopState>();
@@ -63,11 +65,11 @@ namespace Assets.Scripts.Infrastructure.States
             _gameFactory.ProgressReaders.ForEach(x => x.LoadProgress(_progressService.PlayerProgress));
 
 
-        private void InitGameWorld()
+        private async Task InitGameWorld()
         {
             var levelData = LevelStaticData();
 
-            InitSpawners(levelData);
+            await InitSpawners(levelData);
             InitTransfers(levelData);
             GameObject player = InitPlayer(levelData);
             InitHUD(player);
@@ -86,19 +88,17 @@ namespace Assets.Scripts.Infrastructure.States
             _staticData.ForLevel(SceneManager.GetActiveScene().name);
         
 
-        private void InitSpawners(LevelStaticData levelData)
+        private async Task InitSpawners(LevelStaticData levelData)
         {
             if (levelData is not null)
                 foreach (EnemySpawnerData spawnerData in levelData.EnemySpawners)
                 {
-                    _gameFactory.CreateSpawner(spawnerData.Position, spawnerData.Id, spawnerData.MonsterTypeId);
+                    await _gameFactory.CreateSpawner(spawnerData.Position, spawnerData.Id, spawnerData.MonsterTypeId);
                 }
         }
 
-        private GameObject InitPlayer(LevelStaticData levelData)
-        {
-            return _gameFactory.CreatePlayer(levelData.InitialPlayerPosition);
-        }
+        private GameObject InitPlayer(LevelStaticData levelData) => 
+            _gameFactory.CreatePlayer(levelData.InitialPlayerPosition);
 
         private void InitHUD(GameObject player)
         {
@@ -106,10 +106,8 @@ namespace Assets.Scripts.Infrastructure.States
             hud.GetComponentInChildren<ActorUI>().Construct(player.GetComponent<IHealth>());
         }
 
-        private static void CameraFollow(GameObject player)
-        {
+        private static void CameraFollow(GameObject player) => 
             Camera.main.GetComponent<FollowingCamera>().Follow(player);
-        }
 
         public void Enter()
         {

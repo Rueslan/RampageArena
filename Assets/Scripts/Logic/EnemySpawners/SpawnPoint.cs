@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Data;
+﻿using System.Threading.Tasks;
+using Assets.Scripts.Data;
 using Assets.Scripts.Enemy;
 using Assets.Scripts.Infrastructure.Factory;
 using Assets.Scripts.Infrastructure.Services.PersistentProgress;
@@ -31,9 +32,9 @@ namespace Assets.Scripts.Logic.EnemySpawners
                 Spawn();
         }
 
-        private void Spawn()
+        private async void Spawn()
         {
-            GameObject monster = _factory.CreateMonster(MonsterTypeId, transform);
+            GameObject monster = await _factory.CreateMonster(MonsterTypeId, transform);
             _enemyDeath = monster.GetComponent<EnemyDeath>();
             _enemyDeath.OnDeath += Slay;
         }

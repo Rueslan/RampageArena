@@ -2,6 +2,7 @@
 using Assets.Scripts.Infrastructure.Services.PersistentProgress;
 using Assets.Scripts.Logic;
 using System.Collections;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 

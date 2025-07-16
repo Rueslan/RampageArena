@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Assets.Scripts.Enemy;
 using Assets.Scripts.Infrastructure;
 using Assets.Scripts.Infrastructure.Factory;
@@ -36,7 +37,7 @@ namespace Assets.Scripts.Data
             Changed?.Invoke();
         }
 
-        public void LoadProgress(PlayerProgress progress)
+        public async void LoadProgress(PlayerProgress progress)
         {
             LootPositions = progress.WorldData.LootData.LootPositions;
 
@@ -45,7 +46,7 @@ namespace Assets.Scripts.Data
                 string id = kvp.Key;
                 Vector3Data position = kvp.Value;
 
-                LootPiece loot = _factory.CreateLoot();
+                LootPiece loot = await _factory.CreateLoot();
                 loot.transform.position = position.AsUnityVector();
                 loot.Initialize(GenerateLoot());
             }
